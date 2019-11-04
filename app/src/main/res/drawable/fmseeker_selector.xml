@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:height="60dp" android:width="60dp" >
+        <!-- 倒三角 -->
+
+
+        <rotate
+            android:fromDegrees="45"
+            android:pivotX="135%"
+            android:pivotY="15%"
+            android:toDegrees="45">
+            <shape android:shape="rectangle">
+                <solid android:color="#d81e06" />
+            </shape>
+
+        </rotate>
+
+
+    </item>
+    <item android:width="12dp" android:gravity="center_horizontal">
+        <shape android:shape="rectangle" >
+            <solid android:color="#d81e06"></solid>
+        </shape>
+    </item>
+
+<!--    <item>-->
+<!--        <shape android:shape="line">-->
+<!--            <size android:height="100dp"></size>-->
+
+<!--            <solid android:color="#d81e06" />-->
+<!--        </shape>-->
+<!--    </item>-->
+
+
+
+</layer-list>
