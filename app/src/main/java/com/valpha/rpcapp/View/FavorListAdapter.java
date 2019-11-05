@@ -35,8 +35,14 @@ public class FavorListAdapter extends RecyclerView.Adapter<FavorListAdapter.VH> 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
 
-        String data = mController.getFavorList().get(position);
+        final String data = mController.getFavorList().get(position);
         holder.tvFreq.setText(data.substring(0, data.length() - 1).concat(".").concat(String.valueOf(data.charAt(data.length() - 1))));
+        holder.btFavor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mController.getFmSeeker().smoothScrollToPosition(Integer.valueOf(data)-875);
+            }
+        });
     }
 
     @Override

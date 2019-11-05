@@ -14,12 +14,12 @@
         android:gravity="center_horizontal"
         android:text="103.3Mhz"
         android:textColor="?attr/editTextColor"
-        android:textSize="48sp" />
+        android:textSize="24sp" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:background="@android:color/transparent"
         app:srcCompat="@drawable/star_on" />
 
