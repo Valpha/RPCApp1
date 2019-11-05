@@ -1,41 +1,28 @@
-package com.valpha.rpcapp.Activity;
+package com.valpha.rpcapp.View;
 
-import android.util.ArraySet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.valpha.rpcapp.Controller.TunerController;
 import com.valpha.rpcapp.R;
 
-import net.nashlegend.anypref.AnyPref;
-import net.nashlegend.anypref.SharedPrefs;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
-class FavorListAdapter extends RecyclerView.Adapter<FavorListAdapter.VH> {
+/**
+ * @author Valpha
+ */
+public class FavorListAdapter extends RecyclerView.Adapter<FavorListAdapter.VH> {
     private static final String TAG = FavorListAdapter.class.getSimpleName();
-    List<String> mDatas = new ArrayList<>();
+    private final TunerController mController;
 
-    FavorListAdapter() {
-        getFavorList();
-    }
-
-    void getFavorList() {
-        mDatas.clear();
-        SharedPrefs prefs = AnyPref.getPrefs("FavorList");
-        Set<String> set = prefs.getStringSet("favors", new ArraySet<String>());
-        mDatas.addAll(set);
-        Collections.sort(mDatas);
-        Log.d(TAG, "onCreate: datas size is " + mDatas.size());
+    public FavorListAdapter(TunerController controller) {
+        this.mController = controller;
+        mController.addAdapter(this);
     }
 
     @NonNull
@@ -47,13 +34,14 @@ class FavorListAdapter extends RecyclerView.Adapter<FavorListAdapter.VH> {
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        String data = mDatas.get(position);
+
+        String data = mController.getFavorList().get(position);
         holder.tvFreq.setText(data.substring(0, data.length() - 1).concat(".").concat(String.valueOf(data.charAt(data.length() - 1))));
     }
 
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        return mController.getFavorList().size();
     }
 
     public class VH extends RecyclerView.ViewHolder {

@@ -4,9 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroupOverlay;
-
-import androidx.core.view.ViewGroupCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +53,7 @@ public class FlowLayout extends ViewGroup {
 
         //获取子view的个数
         int childCount = getChildCount();
-        for(int i = 0;i < childCount; i ++){
+        for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
             //测量子View的宽和高
             measureChild(child, widthMeasureSpec, heightMeasureSpec);
@@ -68,7 +65,7 @@ public class FlowLayout extends ViewGroup {
             //子View占据的高度
             int childHeight = child.getMeasuredHeight() + layoutParams.topMargin + layoutParams.bottomMargin;
             //换行时候
-            if(lineWidth + childWidth > sizeWidth){
+            if (lineWidth + childWidth > sizeWidth) {
                 //对比得到最大的宽度
                 width = Math.max(width, lineWidth);
                 //重置lineWidth
@@ -76,14 +73,14 @@ public class FlowLayout extends ViewGroup {
                 //记录行高
                 height += lineHeight;
                 lineHeight = childHeight;
-            }else{//不换行情况
+            } else {//不换行情况
                 //叠加行宽
                 lineWidth += childWidth;
                 //得到最大行高
                 lineHeight = Math.max(lineHeight, childHeight);
             }
             //处理最后一个子View的情况
-            if(i == childCount -1){
+            if (i == childCount - 1) {
                 width = Math.max(width, lineWidth);
                 height += lineHeight;
             }
@@ -159,6 +156,7 @@ public class FlowLayout extends ViewGroup {
             top += lineHeight;
         }
     }
+
     /**
      * 与当前ViewGroup对应的LayoutParams
      */

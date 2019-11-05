@@ -1,0 +1,2 @@
+include ':Rpcapp'
+project(':Rpcapp').projectDir = new File('app')
