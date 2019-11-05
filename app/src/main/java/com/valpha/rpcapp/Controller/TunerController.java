@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.valpha.rpcapp.Contract.SharePrefs;
+import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import net.nashlegend.anypref.AnyPref;
 import net.nashlegend.anypref.SharedPrefs;
@@ -22,6 +23,7 @@ public class TunerController {
     private static final String TAG = TunerController.class.getSimpleName();
     private int freq;
     private String freqStr;
+    private DiscreteScrollView mSeeker;
 
     public static TunerController getInstance() {
         return ourInstance;
@@ -135,5 +137,13 @@ public class TunerController {
 
     public int getLastFavor() {
         return Integer.valueOf(this.mDatas.get(this.mDatas.size() - 1));
+    }
+
+    public void bindFmSeeker(DiscreteScrollView seeker) {
+        this.mSeeker = seeker;
+    }
+
+    public RecyclerView getFmSeeker() {
+        return this.mSeeker;
     }
 }

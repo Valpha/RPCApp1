@@ -45,6 +45,7 @@ public class TunerActivity extends AppCompatActivity {
         favorList.setAdapter(new FavorListAdapter(mController));
 
         final DiscreteScrollView seeker = findViewById(R.id.seeker);
+        mController.bindFmSeeker(seeker);
         seeker.setAdapter(new FmseekerAdapter(mController));
         tvCurrentFrequency = findViewById(R.id.tv_curfreq);
 
@@ -100,7 +101,6 @@ public class TunerActivity extends AppCompatActivity {
                         break;
                 }
             }
-
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -137,10 +137,10 @@ public class TunerActivity extends AppCompatActivity {
                         return;
                     } else {
 
-                        seeker.smoothScrollToPosition(firstFreq - 875);
+                        mController.getFmSeeker().smoothScrollToPosition(firstFreq - 875);
                     }
                 } else {
-                    seeker.smoothScrollToPosition(nextFreq - 875);
+                    mController.getFmSeeker().smoothScrollToPosition(nextFreq - 875);
                 }
 
             }
@@ -161,11 +161,11 @@ public class TunerActivity extends AppCompatActivity {
                         return;
                     } else {
 
-                        seeker.smoothScrollToPosition(lastFreq - 875);
+                        mController.getFmSeeker().smoothScrollToPosition(lastFreq - 875);
                     }
 
                 } else {
-                    seeker.smoothScrollToPosition(prevFreq - 875);
+                    mController.getFmSeeker().smoothScrollToPosition(prevFreq - 875);
                 }
             }
         });

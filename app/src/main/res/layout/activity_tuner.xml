@@ -11,7 +11,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorlist"
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_height="120dp"
         android:layout_gravity="center"
         tools:itemCount="1"
         tools:listitem="@layout/favorlist_item">
@@ -73,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
             app:srcCompat="@drawable/ic_bt_prev" />
 
         <com.valpha.rpcapp.View.ImageView2State
@@ -87,6 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@null"
             app:srcCompat="@drawable/ic_bt_next" />
     </LinearLayout>
 
