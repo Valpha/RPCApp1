@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.valpha.rpcapp.R;
 import com.valpha.rpcapp.View.FlowLayout;
@@ -14,16 +15,17 @@ import com.valpha.rpcapp.View.FlowLayout;
 
 public class MainActivity extends AppCompatActivity {
 
-    FlowLayout appSelecter;
+    FlowLayout appSelector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        appSelecter = findViewById(R.id.vg_appselecter);
+
+        appSelector = findViewById(R.id.vg_appselecter);
 
         View appItemTuner = addAppItem(R.drawable.tuner_icon, "收音机", TunerActivity.class);
-        appSelecter.addView(appItemTuner);
+        appSelector.addView(appItemTuner);
 
     }
 

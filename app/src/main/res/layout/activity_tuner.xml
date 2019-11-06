@@ -4,92 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
     tools:context=".Activity.TunerActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_favorlist"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:layout_gravity="center"
-        tools:itemCount="1"
-        tools:listitem="@layout/favorlist_item">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/tv_curfreq"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="当前频率"
-        android:textColor="@android:color/black"
-        android:textSize="36sp" />
-
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:id="@+id/fg_rpc_app"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
 
-        <com.yarolegovich.discretescrollview.DiscreteScrollView
-            android:id="@+id/seeker"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:dsv_orientation="horizontal">
 
-        </com.yarolegovich.discretescrollview.DiscreteScrollView>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="4dp"
+        android:layout_height="match_parent"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            tools:listitem="@layout/scale_layout"
+            android:id="@+id/rv_favorlist"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
             tools:itemCount="1"
-            android:id="@+id/fmseeker"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            tools:listitem="@layout/favorlist_item">
 
         </androidx.recyclerview.widget.RecyclerView>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="12dp"
-            android:layout_height="120dp"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitStart"
-            app:srcCompat="@drawable/scale_sticker" />
-
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/bt_prev"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_curfreq"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            app:srcCompat="@drawable/ic_bt_prev" />
+            android:gravity="center"
+            android:text="当前频率"
+            android:textColor="@android:color/black"
+            android:textSize="36sp" />
 
-        <com.valpha.rpcapp.View.ImageView2State
-            android:id="@+id/bt_favor"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_bt_favor" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/bt_next"
+            <com.yarolegovich.discretescrollview.DiscreteScrollView
+                android:id="@+id/seeker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:dsv_orientation="horizontal">
+
+            </com.yarolegovich.discretescrollview.DiscreteScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fmseeker"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:itemCount="1"
+                tools:listitem="@layout/scale_layout">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="12dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/scale_sticker" />
+
+        </FrameLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            app:srcCompat="@drawable/ic_bt_next" />
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/bt_prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                app:srcCompat="@drawable/ic_bt_prev" />
+
+            <com.valpha.rpcapp.View.ImageView2State
+                android:id="@+id/bt_favor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_bt_favor" />
+
+            <ImageButton
+                android:id="@+id/bt_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                app:srcCompat="@drawable/ic_bt_next" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

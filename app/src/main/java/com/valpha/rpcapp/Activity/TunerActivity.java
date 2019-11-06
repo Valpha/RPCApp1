@@ -1,19 +1,26 @@
 package com.valpha.rpcapp.Activity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.valpha.rpcapp.Contract.RpcApp;
+import com.valpha.rpcapp.Contract.SharePrefs;
 import com.valpha.rpcapp.Controller.TunerController;
+import com.valpha.rpcapp.Fragment.RpcAppFragment;
 import com.valpha.rpcapp.R;
 import com.valpha.rpcapp.View.FavorListAdapter;
 import com.valpha.rpcapp.View.FmseekerAdapter;
@@ -23,7 +30,7 @@ import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import net.nashlegend.anypref.AnyPref;
 
-public class TunerActivity extends AppCompatActivity {
+public class TunerActivity extends AppCompatActivity implements RpcAppFragment.OnFragmentInteractionListener {
 
     private static final String TAG = "TunerActivity";
     private TunerController mController;
@@ -31,6 +38,8 @@ public class TunerActivity extends AppCompatActivity {
     private ImageButton btPrev;
     private ImageButton btnext;
     private ImageView2State btfavor;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
 
 
     @Override
@@ -38,7 +47,11 @@ public class TunerActivity extends AppCompatActivity {
         AnyPref.init(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tuner);
+
         mController = TunerController.getInstance();
+
+        initRpcAppFragment();
+
 
         RecyclerView favorList = findViewById(R.id.rv_favorlist);
         favorList.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
@@ -101,6 +114,7 @@ public class TunerActivity extends AppCompatActivity {
                         break;
                 }
             }
+
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
@@ -160,7 +174,6 @@ public class TunerActivity extends AppCompatActivity {
                     if (lastFreq == 0) {
                         return;
                     } else {
-
                         mController.getFmSeeker().smoothScrollToPosition(lastFreq - 875);
                     }
 
@@ -170,5 +183,22 @@ public class TunerActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void initRpcAppFragment() {
+        manager = getSupportFragmentManager();
+        transaction = manager.beginTransaction();
+        transaction.add(R.id.fg_rpc_app,RpcAppFragment.newInstance(getLastStates()), RpcApp.TAG);
+        transaction.commit();
+    }
+
+    private String getLastStates() {
+        return AnyPref.getPrefs(SharePrefs.RPC_APP_STATE).getString(RpcApp.Communication.MODE, RpcApp.Communication.MODE_DEFAULT);
+    }
+
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        Log.d(TAG, "onFragmentInteraction: Fragment Uri is "+uri);
     }
 }
