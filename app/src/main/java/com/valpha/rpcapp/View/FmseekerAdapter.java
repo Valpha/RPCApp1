@@ -1,24 +1,17 @@
 package com.valpha.rpcapp.View;
 
-import android.util.ArraySet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.valpha.rpcapp.Contract.SharePrefs;
 import com.valpha.rpcapp.Controller.TunerController;
 import com.valpha.rpcapp.R;
 
-import net.nashlegend.anypref.AnyPref;
-import net.nashlegend.anypref.SharedPrefs;
-
 import java.util.List;
-import java.util.Set;
 
 public class FmseekerAdapter extends RecyclerView.Adapter<FmseekerAdapter.VH> {
 
@@ -32,7 +25,7 @@ public class FmseekerAdapter extends RecyclerView.Adapter<FmseekerAdapter.VH> {
     @NonNull
     @Override
     public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.scale_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_fmseeker_scale, parent, false);
         return new VH(view);
     }
 
@@ -53,11 +46,11 @@ public class FmseekerAdapter extends RecyclerView.Adapter<FmseekerAdapter.VH> {
                 holder.ivScale.setScaleY(1.0f);
             } else {
                 holder.tvNumber.setVisibility(View.INVISIBLE);
-                holder.ivScale.setScaleY(0.8f);
+                holder.ivScale.setScaleY(0.7f);
             }
         } else {
             holder.tvNumber.setVisibility(View.INVISIBLE);
-            holder.ivScale.setScaleY(0.7f);
+            holder.ivScale.setScaleY(0.3f);
         }
     }
 

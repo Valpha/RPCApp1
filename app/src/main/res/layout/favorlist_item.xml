@@ -5,11 +5,12 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"
     android:layout_marginEnd="20dp"
+    android:gravity="center"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_frequency"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="103.3Mhz"
@@ -18,9 +19,11 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/star_on" />
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/star_on"
+        android:contentDescription="TODO" />
 
 </LinearLayout>

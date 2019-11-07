@@ -13,7 +13,6 @@
         android:layout_weight="1" />
 
 
-
     <View
         android:id="@+id/divider"
         android:layout_width="4dp"
@@ -24,27 +23,32 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+
+        android:gravity="center"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_favorlist"
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            tools:itemCount="1"
-            tools:listitem="@layout/favorlist_item">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            tools:itemCount="5"
+            tools:listitem="@layout/favorlist_item"></androidx.recyclerview.widget.RecyclerView>
 
         <TextView
             android:id="@+id/tv_curfreq"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
             android:gravity="center"
             android:text="当前频率"
             android:textColor="@android:color/black"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            app:autoSizeTextType="uniform" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -58,33 +62,33 @@
                 android:id="@+id/seeker"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:dsv_orientation="horizontal">
+                tools:listitem="@layout/item_fmseeker_scale">
 
             </com.yarolegovich.discretescrollview.DiscreteScrollView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/fmseeker"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:itemCount="1"
-                tools:listitem="@layout/scale_layout">
-
-            </androidx.recyclerview.widget.RecyclerView>
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="12dp"
-                android:layout_height="120dp"
+                android:layout_width="8dp"
+                android:layout_height="128dp"
                 android:layout_gravity="center_horizontal"
-                android:scaleType="fitStart"
                 app:srcCompat="@drawable/scale_sticker" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/bg_fmseeker" />
 
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageButton
@@ -93,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
+                android:scaleType="centerInside"
                 app:srcCompat="@drawable/ic_bt_prev" />
 
             <com.valpha.rpcapp.View.ImageView2State
@@ -100,6 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:scaleType="centerInside"
                 app:srcCompat="@drawable/ic_bt_favor" />
 
             <ImageButton
@@ -108,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
+                android:scaleType="centerInside"
                 app:srcCompat="@drawable/ic_bt_next" />
         </LinearLayout>
 
